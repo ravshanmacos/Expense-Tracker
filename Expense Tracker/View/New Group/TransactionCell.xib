@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="transactionCell" rowHeight="91" id="KGk-i7-Jjw" customClass="TransactionCell" customModule="Expense_Tracker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="336" height="91"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="336" height="91"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cj7-ej-qdy">
+                        <rect key="frame" x="10" y="20.666666666666671" width="50" height="50"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paypal" translatesAutoresizingMaskIntoConstraints="NO" id="abT-nD-DQ0">
+                                <rect key="frame" x="10" y="10" width="30" height="30"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="blue-light"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="2cS-sS-yfL"/>
+                            <constraint firstItem="abT-nD-DQ0" firstAttribute="top" secondItem="cj7-ej-qdy" secondAttribute="top" constant="10" id="hLZ-KK-Au2"/>
+                            <constraint firstItem="abT-nD-DQ0" firstAttribute="leading" secondItem="cj7-ej-qdy" secondAttribute="leading" constant="10" id="hWv-XP-pUe"/>
+                            <constraint firstAttribute="trailing" secondItem="abT-nD-DQ0" secondAttribute="trailing" constant="10" id="kSF-7s-oId"/>
+                            <constraint firstAttribute="bottom" secondItem="abT-nD-DQ0" secondAttribute="bottom" constant="10" id="vqS-R1-PfA"/>
+                            <constraint firstAttribute="height" constant="50" id="z53-2T-FPE"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ywz-hm-N45">
+                        <rect key="frame" x="70" y="23.666666666666668" width="60.333333333333343" height="43.666666666666657"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PayPal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyn-jA-4Sh">
+                                <rect key="frame" x="0.0" y="0.0" width="60.333333333333336" height="21.666666666666668"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:35 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GnT-rD-ZRU">
+                                <rect key="frame" x="0.0" y="26.666666666666671" width="60.333333333333336" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+$1200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NZ-Lw-wVu">
+                        <rect key="frame" x="276.66666666666669" y="37" width="49.333333333333314" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" systemColor="systemGreenColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="cj7-ej-qdy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7sw-qe-vaL"/>
+                    <constraint firstItem="cj7-ej-qdy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="B5t-iQ-psq"/>
+                    <constraint firstItem="ywz-hm-N45" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="E5h-IP-mN5"/>
+                    <constraint firstItem="0NZ-Lw-wVu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HVV-Y5-czH"/>
+                    <constraint firstItem="ywz-hm-N45" firstAttribute="leading" secondItem="cj7-ej-qdy" secondAttribute="trailing" constant="10" id="QWE-sB-NQD"/>
+                    <constraint firstAttribute="trailing" secondItem="0NZ-Lw-wVu" secondAttribute="trailing" constant="10" id="tAc-cJ-xEv"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="amount" destination="0NZ-Lw-wVu" id="nRU-F5-ge6"/>
+                <outlet property="imageWrapper" destination="cj7-ej-qdy" id="bSr-lW-kI8"/>
+                <outlet property="time" destination="GnT-rD-ZRU" id="oYB-GE-1fO"/>
+                <outlet property="title" destination="jyn-jA-4Sh" id="G3M-kN-h8Z"/>
+            </connections>
+            <point key="canvasLocation" x="151.14503816793894" y="35.563380281690144"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="paypal" width="170.66667175292969" height="170.66667175292969"/>
+        <namedColor name="blue-light">
+            <color red="0.97299998998641968" green="0.96100002527236938" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

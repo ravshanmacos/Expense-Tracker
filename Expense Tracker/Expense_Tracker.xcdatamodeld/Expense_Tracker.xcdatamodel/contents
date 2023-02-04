@@ -1,4 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CreditCard" representedClassName=".CreditCard" syncable="YES" codeGenerationType="class">
+        <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="balance" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="bckImage" attributeType="String"/>
+        <attribute name="fullname" attributeType="String"/>
+        <attribute name="type" attributeType="String"/>
+        <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Expense" inverseName="creditCard" inverseEntity="Expense"/>
+        <relationship name="incomes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Income" inverseName="creditCard" inverseEntity="Income"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="creditCard" inverseEntity="Transaction"/>
+    </entity>
+    <entity name="Expense" representedClassName=".Expense" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="category" attributeType="String"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="creditCard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CreditCard" inverseName="expenses" inverseEntity="CreditCard"/>
+    </entity>
+    <entity name="Income" representedClassName=".Income" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="category" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="creditCard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CreditCard" inverseName="incomes" inverseEntity="CreditCard"/>
+    </entity>
+    <entity name="Transaction" representedClassName=".Transaction" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="category" attributeType="String"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="type" attributeType="String"/>
+        <relationship name="creditCard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CreditCard" inverseName="transactions" inverseEntity="CreditCard"/>
+    </entity>
 </model>

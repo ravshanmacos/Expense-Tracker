@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04E58A74796596B6A15A6E60 /* Pods_Expense_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 972772B1AA8AF248F55CC1A7 /* Pods_Expense_Tracker.framework */; };
+		B72F8D6D298A8A6200E48415 /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72B71DE298A857E00A771CC /* TransactionCell.xib */; };
+		B72F8D6E298A8A6A00E48415 /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72B71E0298A857E00A771CC /* EmptyTableViewCell.xib */; };
+		B72F8D6F298A8A6A00E48415 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72B71E1298A857E00A771CC /* LoadingTableViewCell.xib */; };
+		B72F8D72298A8AE600E48415 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72B71DD298A857E00A771CC /* CardCollectionViewCell.xib */; };
+		B72F8D73298A8B1C00E48415 /* GeneralTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72B71E2298A857E00A771CC /* GeneralTableViewCell.xib */; };
+		B72F8D74298A8B1C00E48415 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72B71DF298A857E00A771CC /* ImageCollectionViewCell.xib */; };
+		B72F8D75298A8B1C00E48415 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B72B71E3298A857E00A771CC /* NotificationCell.xib */; };
+		B740385F29868F0000E4D0A6 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B740385E29868F0000E4D0A6 /* EditViewController.swift */; };
+		B740386129869DEE00E4D0A6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B740386029869DEE00E4D0A6 /* SettingsViewController.swift */; };
+		B76D036B298AA7790096D082 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76D036A298AA7790096D082 /* DatabaseHelper.swift */; };
+		B76D036D298ACD7F0096D082 /* EmptyCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76D036C298ACD7F0096D082 /* EmptyCardView.xib */; };
+		B76D036F298ACD940096D082 /* EmptyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76D036E298ACD940096D082 /* EmptyCardView.swift */; };
+		B7738BFD2982328500FCECCF /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7738BFC2982328500FCECCF /* UIHelper.swift */; };
+		B7738C0029824C1200FCECCF /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7738BFE29824C1200FCECCF /* ImageCollectionViewCell.swift */; };
 		B780A57A297A574C0000D1C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B780A579297A574C0000D1C5 /* AppDelegate.swift */; };
 		B780A57C297A574C0000D1C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B780A57B297A574C0000D1C5 /* SceneDelegate.swift */; };
 		B780A57E297A574C0000D1C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B780A57D297A574C0000D1C5 /* ViewController.swift */; };
@@ -14,9 +29,50 @@
 		B780A584297A574C0000D1C5 /* Expense_Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B780A582297A574C0000D1C5 /* Expense_Tracker.xcdatamodeld */; };
 		B780A586297A574D0000D1C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B780A585297A574D0000D1C5 /* Assets.xcassets */; };
 		B780A589297A574D0000D1C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B780A587297A574D0000D1C5 /* LaunchScreen.storyboard */; };
+		B780A591297A82A50000D1C5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B780A590297A82A50000D1C5 /* HomeViewController.swift */; };
+		B780A594297A82C40000D1C5 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B780A593297A82C40000D1C5 /* OverviewViewController.swift */; };
+		B780A596297A82D90000D1C5 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B780A595297A82D90000D1C5 /* AddItemViewController.swift */; };
+		B780A598297A82EE0000D1C5 /* MyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B780A597297A82EE0000D1C5 /* MyCardsViewController.swift */; };
+		B780A59A297A82FD0000D1C5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B780A599297A82FD0000D1C5 /* ProfileViewController.swift */; };
+		B780A59C297A85800000D1C5 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B780A59B297A85800000D1C5 /* TabbarViewController.swift */; };
+		B7866BD02984FB1C005C5CE7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7866BCF2984FB1C005C5CE7 /* Card.swift */; };
+		B7866BD629855CC8005C5CE7 /* CellStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7866BD529855CC8005C5CE7 /* CellStruct.swift */; };
+		B7866BD829863179005C5CE7 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7866BD729863179005C5CE7 /* Language.swift */; };
+		B7866BDA29863EC4005C5CE7 /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7866BD929863EC4005C5CE7 /* FeedBackViewController.swift */; };
+		B7A22C3D297FD29E007A84E9 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A22C3B297FD29E007A84E9 /* TransactionCell.swift */; };
+		B7A22C41297FD8CA007A84E9 /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A22C3F297FD8CA007A84E9 /* GeneralTableViewCell.swift */; };
+		B7A22C44297FD8FB007A84E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A22C43297FD8FB007A84E9 /* Constants.swift */; };
+		B7A22C48297FFC8E007A84E9 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A22C47297FFC8E007A84E9 /* NotificationTableViewController.swift */; };
+		B7A22C4B297FFD36007A84E9 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A22C49297FFD36007A84E9 /* NotificationCell.swift */; };
+		B7A22C512981396D007A84E9 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A22C4F2981396D007A84E9 /* CardCollectionViewCell.swift */; };
+		B7A22C56298150A4007A84E9 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A22C55298150A4007A84E9 /* AddCardViewController.swift */; };
+		B7B18FA9297CFB15008A60E1 /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B18FA8297CFB15008A60E1 /* AddIncomeViewController.swift */; };
+		B7B18FAC297D0341008A60E1 /* AddExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B18FAB297D0341008A60E1 /* AddExpenseViewController.swift */; };
+		B7C898E0298CBC61003912C7 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C898DF298CBC61003912C7 /* CalendarHelper.swift */; };
+		B7CAE3BE298BAC1B0071B660 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CAE3BD298BAC1B0071B660 /* Helper.swift */; };
+		B7E741CD298A31EC00AFAD2F /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E741CB298A31EC00AFAD2F /* EmptyTableViewCell.swift */; };
+		B7E741D1298A31FA00AFAD2F /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E741CF298A31FA00AFAD2F /* LoadingTableViewCell.swift */; };
+		B7E741D4298A5B0300AFAD2F /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E741D3298A5B0300AFAD2F /* CardView.xib */; };
+		B7E741D6298A5EB400AFAD2F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E741D5298A5EB400AFAD2F /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		867086F55EDAF9C502D60EF1 /* Pods-Expense Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expense Tracker.release.xcconfig"; path = "Target Support Files/Pods-Expense Tracker/Pods-Expense Tracker.release.xcconfig"; sourceTree = "<group>"; };
+		972772B1AA8AF248F55CC1A7 /* Pods_Expense_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Expense_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B72B71DD298A857E00A771CC /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
+		B72B71DE298A857E00A771CC /* TransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCell.xib; sourceTree = "<group>"; };
+		B72B71DF298A857E00A771CC /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		B72B71E0298A857E00A771CC /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
+		B72B71E1298A857E00A771CC /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
+		B72B71E2298A857E00A771CC /* GeneralTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralTableViewCell.xib; sourceTree = "<group>"; };
+		B72B71E3298A857E00A771CC /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
+		B740385E29868F0000E4D0A6 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		B740386029869DEE00E4D0A6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B76D036A298AA7790096D082 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		B76D036C298ACD7F0096D082 /* EmptyCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCardView.xib; sourceTree = "<group>"; };
+		B76D036E298ACD940096D082 /* EmptyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCardView.swift; sourceTree = "<group>"; };
+		B7738BFC2982328500FCECCF /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		B7738BFE29824C1200FCECCF /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B780A576297A574C0000D1C5 /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B780A579297A574C0000D1C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B780A57B297A574C0000D1C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +82,32 @@
 		B780A585297A574D0000D1C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B780A588297A574D0000D1C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B780A58A297A574D0000D1C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B780A590297A82A50000D1C5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B780A593297A82C40000D1C5 /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
+		B780A595297A82D90000D1C5 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		B780A597297A82EE0000D1C5 /* MyCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardsViewController.swift; sourceTree = "<group>"; };
+		B780A599297A82FD0000D1C5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B780A59B297A85800000D1C5 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		B7866BCF2984FB1C005C5CE7 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		B7866BD529855CC8005C5CE7 /* CellStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellStruct.swift; sourceTree = "<group>"; };
+		B7866BD729863179005C5CE7 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		B7866BD929863EC4005C5CE7 /* FeedBackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
+		B7A22C3B297FD29E007A84E9 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		B7A22C3F297FD8CA007A84E9 /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableViewCell.swift; sourceTree = "<group>"; };
+		B7A22C43297FD8FB007A84E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B7A22C47297FFC8E007A84E9 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
+		B7A22C49297FFD36007A84E9 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		B7A22C4F2981396D007A84E9 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		B7A22C55298150A4007A84E9 /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
+		B7B18FA8297CFB15008A60E1 /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
+		B7B18FAB297D0341008A60E1 /* AddExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewController.swift; sourceTree = "<group>"; };
+		B7C898DF298CBC61003912C7 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		B7CAE3BD298BAC1B0071B660 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		B7E741CB298A31EC00AFAD2F /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
+		B7E741CF298A31FA00AFAD2F /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
+		B7E741D3298A5B0300AFAD2F /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		B7E741D5298A5EB400AFAD2F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		E7E08E7B98B5741B55508CB0 /* Pods-Expense Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expense Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Expense Tracker/Pods-Expense Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +115,90 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E58A74796596B6A15A6E60 /* Pods_Expense_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CAE8DA255BFB295C90CEA1E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				972772B1AA8AF248F55CC1A7 /* Pods_Expense_Tracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7FF94BF891C96C10CBD7DCE9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E7E08E7B98B5741B55508CB0 /* Pods-Expense Tracker.debug.xcconfig */,
+				867086F55EDAF9C502D60EF1 /* Pods-Expense Tracker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B727796C298A61A400C623D7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B7E741D5298A5EB400AFAD2F /* CardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B727796D298A61C600C623D7 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				B72B71DD298A857E00A771CC /* CardCollectionViewCell.xib */,
+				B72B71E2298A857E00A771CC /* GeneralTableViewCell.xib */,
+				B72B71DF298A857E00A771CC /* ImageCollectionViewCell.xib */,
+				B72B71E3298A857E00A771CC /* NotificationCell.xib */,
+				B72B71DE298A857E00A771CC /* TransactionCell.xib */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		B740385D29868EE600E4D0A6 /* My Cards */ = {
+			isa = PBXGroup;
+			children = (
+				B780A597297A82EE0000D1C5 /* MyCardsViewController.swift */,
+				B7A22C55298150A4007A84E9 /* AddCardViewController.swift */,
+			);
+			path = "My Cards";
+			sourceTree = "<group>";
+		};
+		B773038E297F8A1300DB5058 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B780A57F297A574C0000D1C5 /* Main.storyboard */,
+				B7E741D3298A5B0300AFAD2F /* CardView.xib */,
+				B76D036C298ACD7F0096D082 /* EmptyCardView.xib */,
+				B72B71E0298A857E00A771CC /* EmptyTableViewCell.xib */,
+				B72B71E1298A857E00A771CC /* LoadingTableViewCell.xib */,
+				B727796D298A61C600C623D7 /* New Group */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B7738BFB2982326F00FCECCF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B7738BFC2982328500FCECCF /* UIHelper.swift */,
+				B76D036A298AA7790096D082 /* DatabaseHelper.swift */,
+				B7CAE3BD298BAC1B0071B660 /* Helper.swift */,
+				B7C898DF298CBC61003912C7 /* CalendarHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		B780A56D297A574C0000D1C5 = {
 			isa = PBXGroup;
 			children = (
 				B780A578297A574C0000D1C5 /* Expense Tracker */,
 				B780A577297A574C0000D1C5 /* Products */,
+				7FF94BF891C96C10CBD7DCE9 /* Pods */,
+				0CAE8DA255BFB295C90CEA1E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +213,98 @@
 		B780A578297A574C0000D1C5 /* Expense Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				B780A579297A574C0000D1C5 /* AppDelegate.swift */,
-				B780A57B297A574C0000D1C5 /* SceneDelegate.swift */,
-				B780A57D297A574C0000D1C5 /* ViewController.swift */,
-				B780A57F297A574C0000D1C5 /* Main.storyboard */,
+				B7738BFB2982326F00FCECCF /* Helpers */,
+				B780A5C1297ADF060000D1C5 /* Model */,
+				B7A22C5429814170007A84E9 /* App */,
+				B773038E297F8A1300DB5058 /* View */,
+				B780A592297A82AA0000D1C5 /* Controllers */,
 				B780A585297A574D0000D1C5 /* Assets.xcassets */,
+				B7A22C43297FD8FB007A84E9 /* Constants.swift */,
 				B780A587297A574D0000D1C5 /* LaunchScreen.storyboard */,
 				B780A58A297A574D0000D1C5 /* Info.plist */,
 				B780A582297A574C0000D1C5 /* Expense_Tracker.xcdatamodeld */,
 			);
 			path = "Expense Tracker";
+			sourceTree = "<group>";
+		};
+		B780A592297A82AA0000D1C5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B727796C298A61A400C623D7 /* Views */,
+				B7A22C5329814146007A84E9 /* Cells */,
+				B780A59B297A85800000D1C5 /* TabbarViewController.swift */,
+				B780A590297A82A50000D1C5 /* HomeViewController.swift */,
+				B7A22C47297FFC8E007A84E9 /* NotificationTableViewController.swift */,
+				B780A593297A82C40000D1C5 /* OverviewViewController.swift */,
+				B740385D29868EE600E4D0A6 /* My Cards */,
+				B7866BD1298556B7005C5CE7 /* Profile */,
+				B7866BD2298556C8005C5CE7 /* Settings */,
+				B7B18FAA297D0311008A60E1 /* Add  */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B780A5C1297ADF060000D1C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B7866BCF2984FB1C005C5CE7 /* Card.swift */,
+				B7866BD529855CC8005C5CE7 /* CellStruct.swift */,
+				B7866BD729863179005C5CE7 /* Language.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B7866BD1298556B7005C5CE7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B780A599297A82FD0000D1C5 /* ProfileViewController.swift */,
+				B740385E29868F0000E4D0A6 /* EditViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		B7866BD2298556C8005C5CE7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B7866BD929863EC4005C5CE7 /* FeedBackViewController.swift */,
+				B740386029869DEE00E4D0A6 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B7A22C5329814146007A84E9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B76D036E298ACD940096D082 /* EmptyCardView.swift */,
+				B7E741CB298A31EC00AFAD2F /* EmptyTableViewCell.swift */,
+				B7E741CF298A31FA00AFAD2F /* LoadingTableViewCell.swift */,
+				B7A22C4F2981396D007A84E9 /* CardCollectionViewCell.swift */,
+				B7A22C3F297FD8CA007A84E9 /* GeneralTableViewCell.swift */,
+				B7A22C3B297FD29E007A84E9 /* TransactionCell.swift */,
+				B7A22C49297FFD36007A84E9 /* NotificationCell.swift */,
+				B7738BFE29824C1200FCECCF /* ImageCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B7A22C5429814170007A84E9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B780A579297A574C0000D1C5 /* AppDelegate.swift */,
+				B780A57B297A574C0000D1C5 /* SceneDelegate.swift */,
+				B780A57D297A574C0000D1C5 /* ViewController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B7B18FAA297D0311008A60E1 /* Add  */ = {
+			isa = PBXGroup;
+			children = (
+				B780A595297A82D90000D1C5 /* AddItemViewController.swift */,
+				B7B18FA8297CFB15008A60E1 /* AddIncomeViewController.swift */,
+				B7B18FAB297D0341008A60E1 /* AddExpenseViewController.swift */,
+			);
+			path = "Add ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +314,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B780A58D297A574D0000D1C5 /* Build configuration list for PBXNativeTarget "Expense Tracker" */;
 			buildPhases = (
+				AC25F78CEB5913E1A1279E89 /* [CP] Check Pods Manifest.lock */,
 				B780A572297A574C0000D1C5 /* Sources */,
 				B780A573297A574C0000D1C5 /* Frameworks */,
 				B780A574297A574C0000D1C5 /* Resources */,
+				0D4D483669B2CD6D155CBF93 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,23 +367,104 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B72F8D73298A8B1C00E48415 /* GeneralTableViewCell.xib in Resources */,
+				B72F8D74298A8B1C00E48415 /* ImageCollectionViewCell.xib in Resources */,
+				B72F8D75298A8B1C00E48415 /* NotificationCell.xib in Resources */,
+				B72F8D72298A8AE600E48415 /* CardCollectionViewCell.xib in Resources */,
+				B72F8D6E298A8A6A00E48415 /* EmptyTableViewCell.xib in Resources */,
+				B72F8D6F298A8A6A00E48415 /* LoadingTableViewCell.xib in Resources */,
+				B76D036D298ACD7F0096D082 /* EmptyCardView.xib in Resources */,
+				B72F8D6D298A8A6200E48415 /* TransactionCell.xib in Resources */,
 				B780A589297A574D0000D1C5 /* LaunchScreen.storyboard in Resources */,
 				B780A586297A574D0000D1C5 /* Assets.xcassets in Resources */,
+				B7E741D4298A5B0300AFAD2F /* CardView.xib in Resources */,
 				B780A581297A574C0000D1C5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0D4D483669B2CD6D155CBF93 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Expense Tracker/Pods-Expense Tracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Expense Tracker/Pods-Expense Tracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Expense Tracker/Pods-Expense Tracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC25F78CEB5913E1A1279E89 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Expense Tracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B780A572297A574C0000D1C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B76D036B298AA7790096D082 /* DatabaseHelper.swift in Sources */,
+				B780A598297A82EE0000D1C5 /* MyCardsViewController.swift in Sources */,
+				B7A22C44297FD8FB007A84E9 /* Constants.swift in Sources */,
+				B7B18FA9297CFB15008A60E1 /* AddIncomeViewController.swift in Sources */,
+				B7A22C512981396D007A84E9 /* CardCollectionViewCell.swift in Sources */,
+				B7E741D6298A5EB400AFAD2F /* CardView.swift in Sources */,
+				B7738BFD2982328500FCECCF /* UIHelper.swift in Sources */,
+				B7C898E0298CBC61003912C7 /* CalendarHelper.swift in Sources */,
+				B7E741CD298A31EC00AFAD2F /* EmptyTableViewCell.swift in Sources */,
+				B780A591297A82A50000D1C5 /* HomeViewController.swift in Sources */,
+				B7866BD02984FB1C005C5CE7 /* Card.swift in Sources */,
+				B7A22C56298150A4007A84E9 /* AddCardViewController.swift in Sources */,
+				B7CAE3BE298BAC1B0071B660 /* Helper.swift in Sources */,
 				B780A57E297A574C0000D1C5 /* ViewController.swift in Sources */,
 				B780A57A297A574C0000D1C5 /* AppDelegate.swift in Sources */,
+				B7866BDA29863EC4005C5CE7 /* FeedBackViewController.swift in Sources */,
+				B7A22C41297FD8CA007A84E9 /* GeneralTableViewCell.swift in Sources */,
+				B7A22C4B297FFD36007A84E9 /* NotificationCell.swift in Sources */,
 				B780A57C297A574C0000D1C5 /* SceneDelegate.swift in Sources */,
+				B780A596297A82D90000D1C5 /* AddItemViewController.swift in Sources */,
+				B76D036F298ACD940096D082 /* EmptyCardView.swift in Sources */,
+				B7A22C3D297FD29E007A84E9 /* TransactionCell.swift in Sources */,
+				B7866BD629855CC8005C5CE7 /* CellStruct.swift in Sources */,
+				B7A22C48297FFC8E007A84E9 /* NotificationTableViewController.swift in Sources */,
+				B7738C0029824C1200FCECCF /* ImageCollectionViewCell.swift in Sources */,
+				B740385F29868F0000E4D0A6 /* EditViewController.swift in Sources */,
+				B780A59A297A82FD0000D1C5 /* ProfileViewController.swift in Sources */,
 				B780A584297A574C0000D1C5 /* Expense_Tracker.xcdatamodeld in Sources */,
+				B7E741D1298A31FA00AFAD2F /* LoadingTableViewCell.swift in Sources */,
+				B7866BD829863179005C5CE7 /* Language.swift in Sources */,
+				B740386129869DEE00E4D0A6 /* SettingsViewController.swift in Sources */,
+				B780A59C297A85800000D1C5 /* TabbarViewController.swift in Sources */,
+				B780A594297A82C40000D1C5 /* OverviewViewController.swift in Sources */,
+				B7B18FAC297D0341008A60E1 /* AddExpenseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +540,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -274,7 +594,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -286,6 +606,7 @@
 		};
 		B780A58E297A574D0000D1C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7E08E7B98B5741B55508CB0 /* Pods-Expense Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -299,6 +620,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,6 +636,7 @@
 		};
 		B780A58F297A574D0000D1C5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 867086F55EDAF9C502D60EF1 /* Pods-Expense Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -327,6 +650,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
