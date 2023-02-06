@@ -8,10 +8,10 @@
 import UIKit
 import CoreData
 
-class AddItemViewController: UIViewController {
-    
+class AddTransactionsViewController: UIViewController {
+    //outlets
     @IBOutlet weak var tableview: UITableView!
-    
+    //properties
     private let reuseIdentifier = Constants.CellIdentifiers.transactionCell
     private var databaseHelper = DatabaseHelper()
     private var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
@@ -21,11 +21,15 @@ class AddItemViewController: UIViewController {
         super.viewDidLoad()
         fetchedResultsController = databaseHelper.setObserver(entityName: "CreditCard")
         fetchedResultsController!.delegate = self
+        initTableview()
+        loadCreditCards()
+    }
+    
+    private func initTableview(){
         tableview.delegate = self
         tableview.dataSource = self
         tableview.rowHeight = 70
         tableview.register(UINib(nibName: "TransactionCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-        loadCreditCards()
     }
     
 
@@ -38,19 +42,16 @@ class AddItemViewController: UIViewController {
     func loadCreditCards(){
         
         do {
-            try fetchedResultsController?.performFetch()
+            try fetchedResultsController!.performFetch()
         } catch {
             print("Could not fetch \(error)")
         }
         
         if fetchedResultsController!.fetchedObjects != nil {
             let creditCards = fetchedResultsController!.fetchedObjects!.map({$0 as! CreditCard})
-            let card = creditCards.filter{$0.active}.first!
-            if card.transactions?.count != 0{
-                transactions = (card.transactions?.sortedArray(using: [NSSortDescriptor(key: "date", ascending: false)]).map({ $0 as! Transaction}))!
-                tableview.reloadData()
-            }
-            
+            guard let card = creditCards.filter({$0.active}).first else { return }
+            transactions = (card.transactions?.sortedArray(using: [NSSortDescriptor(key: "date", ascending: false)]).map({ $0 as! Transaction}))!
+            tableview.reloadData()
         }
         
     }
@@ -59,17 +60,29 @@ class AddItemViewController: UIViewController {
 
 //MARK: - NSFetchedResultsControllerDelegate
 
-extension AddItemViewController: NSFetchedResultsControllerDelegate{
+extension AddTransactionsViewController: NSFetchedResultsControllerDelegate{
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-      loadCreditCards()
+        switch type {
+        case .insert:
+            print("insert happen AddITemView Controller")
+        case .delete:
+            print("delete happen AddITemView Controller")
+        case .move:
+            print("move happen AddITemView Controller")
+        case .update:
+           loadCreditCards()
+        default:
+            print("default happen AddITemView Controller")
+        }
+       
     }
     
 }
 
 //MARK: - UITableViewDelegate and UITableViewDataSource
 
-extension AddItemViewController: UITableViewDelegate, UITableViewDataSource{
+extension AddTransactionsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         transactions.count
     }

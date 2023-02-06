@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
     private let emptyReuseIdentifier = Constants.CellIdentifiers.emptyCell
     private let menuImage = UIImage.init(systemName: "circle.grid.2x2.fill")
     private let notifyImage = UIImage.init(systemName: "bell.fill")
-    private var creditCards:[CreditCard] = []
+    private var currentCard:CreditCard?
     private var transactions:[String] = []
     private var loading = true
     private var isAdded = false
@@ -49,7 +49,7 @@ class HomeViewController: UIViewController {
         tableview.register(UINib(nibName: "TransactionCell", bundle: nil), forCellReuseIdentifier: transactionReuseIdentifier)
         tableview.register(UINib(nibName: "LoadingTableViewCell", bundle: nil), forCellReuseIdentifier: loadingReuseIdentifier)
         tableview.register(UINib(nibName: "EmptyTableViewCell", bundle: nil), forCellReuseIdentifier: emptyReuseIdentifier)
-        loadCreditCards()
+        loadCurrentCard()
         initCardView()
     }
     
@@ -75,25 +75,22 @@ extension HomeViewController{
     
     //Init Empty CardView or Card view according data state
     private func initCardView(){
+         cardViewStack.removeFullyAllArrangedSubviews()
             cardViewStack.layer.cornerRadius = 10
             cardViewStack.backgroundColor = UIColor(named: "blue-light")
             emptyCardView.navigation = navigationController
-            if creditCards.isEmpty{
-                cardViewStack.addArrangedSubview(emptyCardView)
-            }else {
-                cardViewStack.removeFullyAllArrangedSubviews()
-                for card in creditCards{
-                    if card.active{
-                        cardView.setHolderName(with: card.fullname!)
-                        cardView.setLogoImage(with: card.type!)
-                        cardView.setBalance(with: card.balance)
-                        cardView.setCardBckImage(with: card.bckImage)
-                    }
-                }
-                
-                cardViewStack.addArrangedSubview(cardView)
-                isAdded = true
-            }
+        
+        if let currentCard{
+            
+            cardView.setHolderName(with: currentCard.fullname!)
+            cardView.setLogoImage(with: currentCard.type!)
+            cardView.setBalance(with: currentCard.balance)
+            cardView.setCardBckImage(with: currentCard.bckImage)
+            cardViewStack.addArrangedSubview(cardView)
+        } else {
+            cardViewStack.removeArrangedSubview(cardView)
+            cardViewStack.addArrangedSubview(emptyCardView)
+        }
     }
     
     private func initNavButtons(){
@@ -116,8 +113,7 @@ extension HomeViewController{
 
 extension HomeViewController{
     
-    private func loadCreditCards(){
-       // let data = databaseHelper.fetchAll(with: fetchRequest)
+    private func loadCurrentCard(){
         do {
             try fetchedResultsController!.performFetch()
         } catch let error as NSError {
@@ -125,10 +121,12 @@ extension HomeViewController{
         }
         
         if fetchedResultsController!.fetchedObjects != nil {
-            creditCards = fetchedResultsController!.fetchedObjects!.map({$0 as! CreditCard})
-            print(creditCards.count)
-            loading = false
-            tableview.reloadData()
+           let creditCards = fetchedResultsController!.fetchedObjects!.map({$0 as! CreditCard})
+            if let card = creditCards.filter({$0.active}).first{
+                currentCard = card
+                loading = false
+            }
+            
         }
         
     }
@@ -142,15 +140,15 @@ extension HomeViewController: NSFetchedResultsControllerDelegate{
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
-            loadCreditCards()
-            if !isAdded {initCardView()}
+            loadCurrentCard()
+            initCardView()
         case .delete:
-            print("Card deleted")
+            print("delete happen Home View Controller")
         case .move:
-            print("Card moved")
+            print("move happen Home View Controller")
         case .update:
             isAdded.toggle()
-           loadCreditCards()
+           loadCurrentCard()
             if !isAdded {initCardView()}
         default:
             tableview.reloadData()
@@ -169,7 +167,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if creditCards.isEmpty{
+        if currentCard != nil {
             if loading{
                 let cell = tableview.dequeueReusableCell(withIdentifier: loadingReuseIdentifier, for: indexPath) as! LoadingTableViewCell
                 return cell

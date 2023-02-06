@@ -37,8 +37,9 @@ struct DatabaseHelper{
 
     // MARK: - Read
 
-    func fetchAll(with request: NSFetchRequest<CreditCard> = CreditCard.fetchRequest(), sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: "active", ascending: false)]) -> [CreditCard] {
+    func fetchAll(with request: NSFetchRequest<CreditCard> = CreditCard.fetchRequest(), sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: "active", ascending: false)], predicate:NSPredicate?) -> [CreditCard] {
         request.sortDescriptors = sortDescriptors
+        if let predicate{request.predicate = predicate}
         do {
             let objects = try context.fetch(request)
             saveContext(message: "error saving")

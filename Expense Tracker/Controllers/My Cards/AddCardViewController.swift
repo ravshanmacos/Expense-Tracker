@@ -69,7 +69,7 @@ class AddCardViewController: UIViewController {
     
     private func updateCardsStatus(){
         let request: NSFetchRequest<CreditCard> = CreditCard.fetchRequest()
-       let cards = databaseHelper.fetchAll(with: request)
+       let cards = databaseHelper.fetchAll(with: request, predicate: nil)
         if cards.isEmpty {return}
         cards.forEach { card in
             databaseHelper.update(object: card, data: ["active": false])

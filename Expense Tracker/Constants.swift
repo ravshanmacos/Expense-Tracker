@@ -8,6 +8,13 @@
 import Foundation
 
 struct Constants{
+    
+    struct categories{
+        static let incomes = ["Salary", "UpWork"]
+        static let expenses = ["Shopping", "Food", "Payment"]
+        static let transactionTypes = ["income","expense"]
+    }
+    
     struct CellIdentifiers {
         static let loadingCell = "LoadingTableViewCell"
         static let emptyCell = "EmptyTableViewCell"

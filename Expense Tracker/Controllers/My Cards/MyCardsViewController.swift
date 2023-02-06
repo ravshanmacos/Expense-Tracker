@@ -53,7 +53,7 @@ class MyCardsViewController: UIViewController {
 extension MyCardsViewController{
     private func loadCreditCards(){
         let request: NSFetchRequest<CreditCard> = CreditCard.fetchRequest()
-        creditCards = databaseHelper.fetchAll(with: request)
+        creditCards = databaseHelper.fetchAll(with: request, predicate: nil)
         databaseHelper.loading.toggle()
         collectionView.reloadData()
     }
@@ -101,18 +101,15 @@ extension MyCardsViewController: UICollectionViewDataSource{
 
 extension MyCardsViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
         for (index,card) in creditCards.enumerated(){
             if index == indexPath.row{
-                creditCards.swapAt(index, 0)
-                card.active = true
+                databaseHelper.update(object: card, data: ["active":true])
             }else{
-                card.active = false
+                databaseHelper.update(object: card, data: ["active":false])
             }
         }
-        collectionView.deselectItem(at: indexPath, animated: true)
         loadCreditCards()
-        collectionView.reloadData()
-        
     }
 }
 
@@ -127,6 +124,7 @@ extension MyCardsViewController: UICollectionViewDelegateFlowLayout{
         UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
 }
+
 
 
 

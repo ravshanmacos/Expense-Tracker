@@ -7,6 +7,7 @@
 
 import UIKit
 import Charts
+import CoreData
 
 class OverviewViewController: UIViewController, ChartViewDelegate {
 
@@ -14,20 +15,30 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var orangeBox: UIView!
     @IBOutlet weak var barViewWrapper: UIStackView!
     @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     
     let barChartView = BarChartView()
     let reuseIdentifier = Constants.CellIdentifiers.transactionCell
     let weeks = ["week-1", "week-2", "week-3", "week-4"]
-    let income = [2500.00, 1200.00, 1900.00, 2000.00]
-    let expenses = [1500.00, 900.00, 1100.00, 1100.00]
+    let chartDataincomes = [2500.00, 1200.00, 1900.00, 2000.00]
+    let chartDataexpenses = [1500.00, 900.00, 1100.00, 1100.00]
+    
+    private var databaseHelper = DatabaseHelper()
+    private var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
+    private var transactions: [Transaction] = []
+    private var incomes:[Transaction] = []
+    private var expenses:[Transaction] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchedResultsController = databaseHelper.setObserver(entityName: "CreditCard")
+        fetchedResultsController!.delegate = self
         barChartView.delegate = self
         tableview.delegate = self
         tableview.dataSource = self
         tableview.register(UINib(nibName: "TransactionCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableview.rowHeight = 70
+        loadCreditCards()
         initializeBarChart()
     }
    
@@ -39,6 +50,78 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
          tabBarController?.navigationItem.rightBarButtonItem = .none
     }
     
+    func loadCreditCards(){
+        
+        do {
+            try fetchedResultsController!.performFetch()
+        } catch {
+            print("Could not fetch \(error)")
+        }
+        
+        if fetchedResultsController!.fetchedObjects != nil {
+            let creditCards = fetchedResultsController!.fetchedObjects!.map({$0 as! CreditCard})
+            guard let card = creditCards.filter({$0.active}).first else { return }
+            transactions = (card.transactions?.sortedArray(using: [NSSortDescriptor(key: "date", ascending: false)]).map({ $0 as! Transaction}))!
+            if segmentControl.selectedSegmentIndex == 0{
+                incomes = transactions.filter({$0.type == "income"})
+            }else{
+                expenses = transactions.filter({$0.type == "expense"})
+            }
+            tableview.reloadData()
+        }
+        
+    }
+    
+    
+    @IBAction func segmentControlChanged(_ sender: UISegmentedControl) {
+        loadCreditCards()
+    }
+    
+}
+
+
+
+extension OverviewViewController: NSFetchedResultsControllerDelegate{
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            print("insert happen AddITemView Controller")
+        case .delete:
+            print("delete happen AddITemView Controller")
+        case .move:
+            print("move happen AddITemView Controller")
+        case .update:
+           loadCreditCards()
+        default:
+            print("default happen AddITemView Controller")
+        }
+       
+    }
+}
+
+extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return segmentControl.selectedSegmentIndex == 0 ? incomes.count : expenses.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        as! TransactionCell
+        if segmentControl.selectedSegmentIndex == 0{
+            cell.setTitle(with: incomes[0].title!)
+            cell.setAmount(with: incomes[0].amount, type: incomes[0].type!)
+            return cell
+        }
+        cell.setTitle(with: expenses[0].title!)
+        cell.setAmount(with: expenses[0].amount, type: expenses[0].type!)
+        return cell
+    }
+    
+    
+}
+
+
+extension OverviewViewController{
     private func initializeBarChart(){
      
         barViewWrapper.addArrangedSubview(barChartView)
@@ -89,17 +172,14 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
 
             for i in 0..<self.weeks.count {
                 
-                let dataEntry1 = BarChartDataEntry(x: Double(i) , y: self.self.income[i])
+                let dataEntry1 = BarChartDataEntry(x: Double(i) , y: self.self.chartDataincomes[i])
                 dataEntries1.append(dataEntry1)
 
-                let dataEntry = BarChartDataEntry(x: Double(i) , y: self.expenses[i])
+                let dataEntry = BarChartDataEntry(x: Double(i) , y: self.chartDataexpenses[i])
                 dataEntries.append(dataEntry)
 
                 //stack barchart
                 //let dataEntry = BarChartDataEntry(x: Double(i), yValues:  [self.unitsSold[i],self.unitsBought[i]], label: "groupChart")
-
-
-
             }
 
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: "expenses")
@@ -138,34 +218,9 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
             barChartView.notifyDataSetChanged()
 
             barChartView.data = chartData
-
-
-
-
-
-
-            //background color
-           
-
             //chart animation
             barChartView.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
 
 
         }
-    
 }
-
-extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        as! TransactionCell
-        return cell
-    }
-    
-    
-}
-
