@@ -6,10 +6,40 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants{
     
-    struct categories{
+    struct Xibs{
+        struct CollectionViewCells{
+            static let cardCell = "CardCollectionViewCell"
+            static let imageCell = "ImageCollectionViewCell"
+        }
+        
+        struct TableViewCells{
+            static let transactionCell = "TransactionCell"
+            static let notificationCell = "NotificationCell"
+            static let generalCell = "GeneralTableViewCell"
+        }
+        
+        struct StateCells{
+            static let emptyCell = "EmptyTableViewCell"
+            static let loadingCell = "LoadingTableViewCell"
+        }
+        
+        struct Views{
+            static let cardView = "CardView"
+            static let emptyCardView = "EmptyCardView"
+        }
+    }
+    
+    
+    struct Images{
+        static let menuIcon = UIImage.init(systemName: "circle.grid.2x2.fill")
+        static let notificationIcon = UIImage.init(systemName: "bell.fill")
+    }
+    
+    struct Categories{
         static let incomes = ["Salary", "UpWork"]
         static let expenses = ["Shopping", "Food", "Payment"]
         static let transactionTypes = ["income","expense"]

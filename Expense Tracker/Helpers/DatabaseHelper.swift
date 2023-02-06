@@ -36,6 +36,38 @@ struct DatabaseHelper{
     }
 
     // MARK: - Read
+    
+    func performFetch(with fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>)->[CreditCard]?{
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        if let objects = fetchedResultsController.fetchedObjects{
+            let creditCards = objects.map({$0 as! CreditCard})
+            return creditCards
+        }
+        return nil
+    }
+    
+    func getTransactions(with card:CreditCard, sortDescriptors:[NSSortDescriptor] = [NSSortDescriptor(key: "date", ascending: false)])-> [Transaction]?{
+        let transactions = (card.transactions?.sortedArray(using: sortDescriptors).map({ $0 as! Transaction}))!
+        return transactions
+    }
+    
+    func getCurrentCard(with creditCards: [CreditCard])->CreditCard?{
+        guard let card = creditCards.filter({$0.active}).first else {return nil}
+        return card
+    }
+    
+    func getIncomes(with transactions:[Transaction])->[Transaction]{
+        return transactions.filter {$0.type == "income"}
+    }
+    
+    func getExpenses(with transactions:[Transaction])->[Transaction]{
+        return transactions.filter {$0.type == "expense"}
+    }
+    
 
     func fetchAll(with request: NSFetchRequest<CreditCard> = CreditCard.fetchRequest(), sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: "active", ascending: false)], predicate:NSPredicate?) -> [CreditCard] {
         request.sortDescriptors = sortDescriptors

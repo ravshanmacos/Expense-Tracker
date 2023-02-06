@@ -17,19 +17,26 @@ class HomeViewController: UIViewController {
     
     
     //MARK: - Properties
+   
     private lazy var emptyCardView:EmptyCardView = {
         return (UINib(nibName: "EmptyCardView", bundle: nil).instantiate(withOwner: nil).first as! EmptyCardView)
     }()
     private lazy var cardView:CardView = {
         return UINib(nibName: "CardView", bundle: nil).instantiate(withOwner: nil).first as! CardView
     }()
+    
+    //Constants
+    private let transactionCell = Constants.Xibs.TableViewCells.transactionCell
+    private let loadingCell = Constants.Xibs.StateCells.loadingCell
+    private let emptyCell = Constants.Xibs.StateCells.emptyCell
+    private let menuImage = Constants.Images.menuIcon
+    private let notifyImage = Constants.Images.notificationIcon
     private let transactionReuseIdentifier = Constants.CellIdentifiers.transactionCell
     private let loadingReuseIdentifier = Constants.CellIdentifiers.loadingCell
     private let emptyReuseIdentifier = Constants.CellIdentifiers.emptyCell
-    private let menuImage = UIImage.init(systemName: "circle.grid.2x2.fill")
-    private let notifyImage = UIImage.init(systemName: "bell.fill")
-    private var currentCard:CreditCard?
-    private var transactions:[String] = []
+    
+    private var activeCard:CreditCard?
+    private var transactions:[Transaction] = []
     private var loading = true
     private var isAdded = false
     
@@ -43,12 +50,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         fetchedResultsController = databaseHelper.setObserver(entityName: "CreditCard")
         fetchedResultsController!.delegate = self
-        tableview.delegate = self
-        tableview.dataSource = self
-        tableview.rowHeight = 70
-        tableview.register(UINib(nibName: "TransactionCell", bundle: nil), forCellReuseIdentifier: transactionReuseIdentifier)
-        tableview.register(UINib(nibName: "LoadingTableViewCell", bundle: nil), forCellReuseIdentifier: loadingReuseIdentifier)
-        tableview.register(UINib(nibName: "EmptyTableViewCell", bundle: nil), forCellReuseIdentifier: emptyReuseIdentifier)
+        initTableview()
         loadCurrentCard()
         initCardView()
     }
@@ -73,6 +75,16 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController{
     
+    //init TableView
+    private func initTableview(){
+        tableview.delegate = self
+        tableview.dataSource = self
+        tableview.rowHeight = 70
+        tableview.register(UINib(nibName: transactionCell, bundle: nil), forCellReuseIdentifier: transactionReuseIdentifier)
+        tableview.register(UINib(nibName: loadingCell, bundle: nil), forCellReuseIdentifier: loadingReuseIdentifier)
+        tableview.register(UINib(nibName: emptyCell, bundle: nil), forCellReuseIdentifier: emptyReuseIdentifier)
+    }
+    
     //Init Empty CardView or Card view according data state
     private func initCardView(){
          cardViewStack.removeFullyAllArrangedSubviews()
@@ -81,7 +93,6 @@ extension HomeViewController{
             emptyCardView.navigation = navigationController
         
         if let currentCard{
-            
             cardView.setHolderName(with: currentCard.fullname!)
             cardView.setLogoImage(with: currentCard.type!)
             cardView.setBalance(with: currentCard.balance)
@@ -114,23 +125,15 @@ extension HomeViewController{
 extension HomeViewController{
     
     private func loadCurrentCard(){
-        do {
-            try fetchedResultsController!.performFetch()
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
+        guard let creditCards = databaseHelper.performFetch(with: fetchedResultsController!) else {return}
+        if let activeCard = databaseHelper.getCurrentCard(with: creditCards), let transactions = databaseHelper.getTransactions(with: activeCard){
+            self.activeCard = activeCard
+            self.transactions = transactions
         }
-        
-        if fetchedResultsController!.fetchedObjects != nil {
-           let creditCards = fetchedResultsController!.fetchedObjects!.map({$0 as! CreditCard})
-            if let card = creditCards.filter({$0.active}).first{
-                currentCard = card
-                loading = false
-            }
-            
+        tableview.reloadData()
         }
         
     }
-}
 
 //MARK: - NSFetchedResultsControllerDelegate
 
@@ -167,7 +170,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if currentCard != nil {
+        if transactions.isEmpty {
             if loading{
                 let cell = tableview.dequeueReusableCell(withIdentifier: loadingReuseIdentifier, for: indexPath) as! LoadingTableViewCell
                 return cell
@@ -178,6 +181,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
            
         }
         let cell = tableview.dequeueReusableCell(withIdentifier: transactionReuseIdentifier, for: indexPath) as! TransactionCell
+        cell.setTitle(with: transactions[indexPath.row].title!)
+        cell.setTime(with: transactions[indexPath.row].date!)
+        cell.setAmount(with: transactions[indexPath.row].amount, type: transactions[indexPath.row].type!)
         return cell
     }
     

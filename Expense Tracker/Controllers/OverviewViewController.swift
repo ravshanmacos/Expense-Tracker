@@ -59,9 +59,10 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         }
         
         if fetchedResultsController!.fetchedObjects != nil {
+            let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
             let creditCards = fetchedResultsController!.fetchedObjects!.map({$0 as! CreditCard})
             guard let card = creditCards.filter({$0.active}).first else { return }
-            transactions = (card.transactions?.sortedArray(using: [NSSortDescriptor(key: "date", ascending: false)]).map({ $0 as! Transaction}))!
+            transactions = (card.transactions?.sortedArray(using: [sortDescriptor]).map({ $0 as! Transaction}))!
             if segmentControl.selectedSegmentIndex == 0{
                 incomes = transactions.filter({$0.type == "income"})
             }else{

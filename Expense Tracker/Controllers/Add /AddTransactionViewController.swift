@@ -26,9 +26,9 @@ class AddTransactionViewController: UIViewController {
     private var calendarHelper = CalendarHelper()
     
     //properties
-    private let transactionTypes = Constants.categories.transactionTypes
-    private let incomeCategories = Constants.categories.incomes
-    private let expenseCategories = Constants.categories.expenses
+    private let transactionTypes = Constants.Categories.transactionTypes
+    private let incomeCategories = Constants.Categories.incomes
+    private let expenseCategories = Constants.Categories.expenses
    
     //Optional Variables
     private var selectedTransactionType:String?
