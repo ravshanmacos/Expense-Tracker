@@ -17,6 +17,7 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
+    private let transactionCell = Constants.Xibs.TableViewCells.transactionCell
     let barChartView = BarChartView()
     let reuseIdentifier = Constants.CellIdentifiers.transactionCell
     let weeks = ["week-1", "week-2", "week-3", "week-4"]
@@ -34,14 +35,18 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         fetchedResultsController = databaseHelper.setObserver(entityName: "CreditCard")
         fetchedResultsController!.delegate = self
         barChartView.delegate = self
-        tableview.delegate = self
-        tableview.dataSource = self
-        tableview.register(UINib(nibName: "TransactionCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-        tableview.rowHeight = 70
+        initTableView()
         loadCreditCards()
         initializeBarChart()
     }
    
+    private func initTableView(){
+        tableview.delegate = self
+        tableview.dataSource = self
+        tableview.register(UINib(nibName: transactionCell, bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        tableview.rowHeight = 70
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         blueBox.layer.cornerRadius = 10
@@ -51,31 +56,21 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
     }
     
     func loadCreditCards(){
-        
-        do {
-            try fetchedResultsController!.performFetch()
-        } catch {
-            print("Could not fetch \(error)")
+
+        guard let creditCards = databaseHelper.performFetch(with: fetchedResultsController!) else {return}
+        if let activeCard = databaseHelper.getCurrentCard(with: creditCards),
+           let transactions = databaseHelper.getTransactions(with: activeCard)
+        {
+             incomes = databaseHelper.getIncomes(with: transactions)
+             expenses = databaseHelper.getExpenses(with: transactions)
         }
-        
-        if fetchedResultsController!.fetchedObjects != nil {
-            let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
-            let creditCards = fetchedResultsController!.fetchedObjects!.map({$0 as! CreditCard})
-            guard let card = creditCards.filter({$0.active}).first else { return }
-            transactions = (card.transactions?.sortedArray(using: [sortDescriptor]).map({ $0 as! Transaction}))!
-            if segmentControl.selectedSegmentIndex == 0{
-                incomes = transactions.filter({$0.type == "income"})
-            }else{
-                expenses = transactions.filter({$0.type == "expense"})
-            }
-            tableview.reloadData()
-        }
-        
+        tableview.reloadData()
     }
     
     
     @IBAction func segmentControlChanged(_ sender: UISegmentedControl) {
         loadCreditCards()
+        
     }
     
 }
@@ -84,19 +79,7 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
 
 extension OverviewViewController: NSFetchedResultsControllerDelegate{
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            print("insert happen AddITemView Controller")
-        case .delete:
-            print("delete happen AddITemView Controller")
-        case .move:
-            print("move happen AddITemView Controller")
-        case .update:
-           loadCreditCards()
-        default:
-            print("default happen AddITemView Controller")
-        }
-       
+        loadCreditCards()
     }
 }
 
@@ -108,13 +91,14 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         as! TransactionCell
+    
         if segmentControl.selectedSegmentIndex == 0{
-            cell.setTitle(with: incomes[0].title!)
-            cell.setAmount(with: incomes[0].amount, type: incomes[0].type!)
+            cell.setTitle(with: incomes[indexPath.row].title!)
+            cell.setAmount(with: incomes[indexPath.row].amount, type: incomes[indexPath.row].type!)
             return cell
         }
-        cell.setTitle(with: expenses[0].title!)
-        cell.setAmount(with: expenses[0].amount, type: expenses[0].type!)
+        cell.setTitle(with: expenses[indexPath.row].title!)
+        cell.setAmount(with: expenses[indexPath.row].amount, type: expenses[indexPath.row].type!)
         return cell
     }
     

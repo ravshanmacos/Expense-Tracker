@@ -622,7 +622,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add Income"/>
                                 <connections>
-                                    <action selector="addIncomeTapped:" destination="q7W-XJ-ZDi" eventType="touchUpInside" id="YXP-Mt-8M2"/>
+                                    <action selector="addTransactionTapped:" destination="q7W-XJ-ZDi" eventType="touchUpInside" id="30x-Wg-4Jt"/>
                                 </connections>
                             </button>
                         </subviews>

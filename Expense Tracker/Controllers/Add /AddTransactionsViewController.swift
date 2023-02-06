@@ -11,8 +11,10 @@ import CoreData
 class AddTransactionsViewController: UIViewController {
     //outlets
     @IBOutlet weak var tableview: UITableView!
-    //properties
+    //constants
     private let reuseIdentifier = Constants.CellIdentifiers.transactionCell
+    private let transactionCell = Constants.Xibs.TableViewCells.transactionCell
+    //variables
     private var databaseHelper = DatabaseHelper()
     private var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
     private var transactions:[Transaction] = []
@@ -29,7 +31,7 @@ class AddTransactionsViewController: UIViewController {
         tableview.delegate = self
         tableview.dataSource = self
         tableview.rowHeight = 70
-        tableview.register(UINib(nibName: "TransactionCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        tableview.register(UINib(nibName: transactionCell, bundle: nil), forCellReuseIdentifier: reuseIdentifier)
     }
     
 
@@ -40,20 +42,11 @@ class AddTransactionsViewController: UIViewController {
     }
     
     func loadCreditCards(){
-        
-        do {
-            try fetchedResultsController!.performFetch()
-        } catch {
-            print("Could not fetch \(error)")
+        guard let creditCards = databaseHelper.performFetch(with: fetchedResultsController!) else {return}
+        if let activeCard = databaseHelper.getCurrentCard(with: creditCards), let transactions = databaseHelper.getTransactions(with: activeCard){
+            self.transactions = transactions
         }
-        
-        if fetchedResultsController!.fetchedObjects != nil {
-            let creditCards = fetchedResultsController!.fetchedObjects!.map({$0 as! CreditCard})
-            guard let card = creditCards.filter({$0.active}).first else { return }
-            transactions = (card.transactions?.sortedArray(using: [NSSortDescriptor(key: "date", ascending: false)]).map({ $0 as! Transaction}))!
-            tableview.reloadData()
-        }
-        
+        tableview.reloadData()
     }
 
 }

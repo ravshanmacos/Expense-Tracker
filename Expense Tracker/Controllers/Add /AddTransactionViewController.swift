@@ -22,7 +22,7 @@ class AddTransactionViewController: UIViewController {
     
     //instances
     private var weekUI = UIHelper()
-    private let databaseHelper = DatabaseHelper()
+    private var databaseHelper = DatabaseHelper()
     private var calendarHelper = CalendarHelper()
     
     //properties
@@ -69,7 +69,7 @@ class AddTransactionViewController: UIViewController {
         selectedTransactionCategory = title
     }
     
-    @IBAction func addIncomeTapped(_ sender: Any) {
+    @IBAction func addTransactionTapped(_ sender: Any) {
         let request:NSFetchRequest<CreditCard> = CreditCard.fetchRequest()
         let creditCards = databaseHelper.fetchAll(with: request, predicate: nil)
         let card = creditCards.filter{$0.active}.first!

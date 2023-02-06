@@ -37,12 +37,14 @@ struct DatabaseHelper{
 
     // MARK: - Read
     
-    func performFetch(with fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>)->[CreditCard]?{
+    mutating func performFetch(with fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>)->[CreditCard]?{
+        loading = true
         do {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        loading = false
         if let objects = fetchedResultsController.fetchedObjects{
             let creditCards = objects.map({$0 as! CreditCard})
             return creditCards
@@ -69,15 +71,18 @@ struct DatabaseHelper{
     }
     
 
-    func fetchAll(with request: NSFetchRequest<CreditCard> = CreditCard.fetchRequest(), sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: "active", ascending: false)], predicate:NSPredicate?) -> [CreditCard] {
+    mutating func fetchAll(with request: NSFetchRequest<CreditCard> = CreditCard.fetchRequest(), sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: "active", ascending: false)], predicate:NSPredicate?) -> [CreditCard] {
+        loading = true
         request.sortDescriptors = sortDescriptors
         if let predicate{request.predicate = predicate}
         do {
             let objects = try context.fetch(request)
             saveContext(message: "error saving")
+            loading = false
             return objects
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
+            loading = false
             return []
         }
     }

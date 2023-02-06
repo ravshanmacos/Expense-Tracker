@@ -21,7 +21,7 @@ class AddCardViewController: UIViewController {
     @IBOutlet weak var active: UISwitch!
     
     //MARK: - Properties
-    private let databaseHelper = DatabaseHelper()
+    private var databaseHelper = DatabaseHelper()
     private let reuseIdentifier = Constants.CellIdentifiers.imageCell
     private let imageStrings = ["cardImage-1","cardImage-2","cardImage-3","cardImage-4","cardImage-5"]
     private var selectedImage: String?

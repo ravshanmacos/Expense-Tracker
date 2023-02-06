@@ -35,12 +35,11 @@ class HomeViewController: UIViewController {
     private let loadingReuseIdentifier = Constants.CellIdentifiers.loadingCell
     private let emptyReuseIdentifier = Constants.CellIdentifiers.emptyCell
     
+    //Variables
     private var activeCard:CreditCard?
     private var transactions:[Transaction] = []
-    private var loading = true
-    private var isAdded = false
     
-    //MARK: - Instances
+    //Instances
     private var databaseHelper = DatabaseHelper()
     private var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
     
@@ -92,11 +91,11 @@ extension HomeViewController{
             cardViewStack.backgroundColor = UIColor(named: "blue-light")
             emptyCardView.navigation = navigationController
         
-        if let currentCard{
-            cardView.setHolderName(with: currentCard.fullname!)
-            cardView.setLogoImage(with: currentCard.type!)
-            cardView.setBalance(with: currentCard.balance)
-            cardView.setCardBckImage(with: currentCard.bckImage)
+        if let activeCard{
+            cardView.setHolderName(with: activeCard.fullname!)
+            cardView.setLogoImage(with: activeCard.type!)
+            cardView.setBalance(with: activeCard.balance)
+            cardView.setCardBckImage(with: activeCard.bckImage)
             cardViewStack.addArrangedSubview(cardView)
         } else {
             cardViewStack.removeArrangedSubview(cardView)
@@ -150,9 +149,8 @@ extension HomeViewController: NSFetchedResultsControllerDelegate{
         case .move:
             print("move happen Home View Controller")
         case .update:
-            isAdded.toggle()
            loadCurrentCard()
-            if !isAdded {initCardView()}
+           initCardView()
         default:
             tableview.reloadData()
         }
@@ -171,7 +169,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if transactions.isEmpty {
-            if loading{
+            if databaseHelper.loading{
                 let cell = tableview.dequeueReusableCell(withIdentifier: loadingReuseIdentifier, for: indexPath) as! LoadingTableViewCell
                 return cell
             }else{
