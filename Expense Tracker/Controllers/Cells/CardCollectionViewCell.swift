@@ -11,7 +11,6 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cardBckImage: UIImageView!
     @IBOutlet weak var currentBalance: UILabel!
-    @IBOutlet weak var cardNumber: UILabel!
     @IBOutlet weak var cardHolder: UILabel!
     @IBOutlet weak var cardWrapper: UIView!
     @IBOutlet weak var blackBackground: UIView!
@@ -19,6 +18,8 @@ class CardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var currentMark: UILabel!
     
     let cardLogos = ["paypal", "mastercard","humo","uzcard","visa"]
+    var delegate: CardDetails!
+    var currentIndexPath: IndexPath!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,10 +48,6 @@ class CardCollectionViewCell: UICollectionViewCell {
         currentBalance.text = balance
     }
     
-    func setCardNumber(with number: String){
-        cardNumber.text = number
-    }
-    
     func setCardHolder(with name: String){
         cardHolder.text = name
     }
@@ -58,5 +55,11 @@ class CardCollectionViewCell: UICollectionViewCell {
     func setCurrentMark(active:Bool){
         currentMark.isHidden = !active
     }
+    
+    @IBAction func detailsBtn(_ sender: Any) {
+        
+        delegate.cardDetails(indexPath: currentIndexPath)
+    }
+    
 
 }

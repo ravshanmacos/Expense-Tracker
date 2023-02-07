@@ -10,6 +10,8 @@ import UIKit
 class CardView: UIView {
 
     @IBOutlet weak private var balanceLabel: UILabel!
+    @IBOutlet weak var incomeLabel: UILabel!
+    @IBOutlet weak var expenseLabel: UILabel!
     @IBOutlet weak private var cardBckImage: UIImageView!
     @IBOutlet weak private var logoImage: UIImageView!
     @IBOutlet private weak var holderName: UILabel!
@@ -23,6 +25,14 @@ class CardView: UIView {
     func setBalance(with balance:Double){
         let formattedString = Helper.balanceFormatter(with: balance)
         balanceLabel.text = formattedString
+    }
+    
+    func setIncome(with income:String){
+        incomeLabel.text = income
+    }
+    
+    func setExpense(with expense:String){
+        expenseLabel.text = expense
     }
     
     func setCardBckImage(with bckImage: String?){

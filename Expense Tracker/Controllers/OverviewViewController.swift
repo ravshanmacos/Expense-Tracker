@@ -11,6 +11,8 @@ import CoreData
 
 class OverviewViewController: UIViewController, ChartViewDelegate {
 
+    @IBOutlet weak var totalIncomeLabel: UILabel!
+    @IBOutlet weak var totalExpenseLabel: UILabel!
     @IBOutlet weak var blueBox: UIView!
     @IBOutlet weak var orangeBox: UIView!
     @IBOutlet weak var barViewWrapper: UIStackView!
@@ -37,7 +39,17 @@ class OverviewViewController: UIViewController, ChartViewDelegate {
         barChartView.delegate = self
         initTableView()
         loadCreditCards()
+        initTopBar()
         initializeBarChart()
+    }
+    
+    private func initTopBar(){
+        let totalIncome = Helper.calculateTotalBalances(with: incomes.map{$0.amount})
+        let totalExpense = Helper.calculateTotalBalances(with: expenses.map{$0.amount})
+        print(totalIncome)
+        print(totalExpense)
+        totalIncomeLabel.text = totalIncome
+        totalExpenseLabel.text = totalExpense
     }
    
     private func initTableView(){

@@ -17,4 +17,12 @@ struct Helper{
         let formattedString = formatter.string(from: NSNumber(value: UInt(balance)))
         return formattedString
     }
+    
+    static func calculateTotalBalances(with balances:[Double])->String{
+        var totalBalance:Double = 0
+        balances.forEach { balance in
+            totalBalance += balance
+        }
+        return balanceFormatter(with: totalBalance)!
+    }
 }

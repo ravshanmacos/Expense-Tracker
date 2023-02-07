@@ -15,9 +15,13 @@ class MyCardsViewController: UIViewController {
     
    
     //MARK: - Properties
-    private var creditCards: [CreditCard] = []
+    private let mycardToUpdateCard = Constants.Segues.mycardToUpdateCard
     private let reuseIdentifier = Constants.CellIdentifiers.cardCell
     private let addButtonImage = UIImage.init(systemName: "plus")
+    
+    private var creditCards: [CreditCard] = []
+    private var selectedCard: CreditCard?
+    
     
     //MARK: - Instances
     private var databaseHelper = DatabaseHelper()
@@ -49,7 +53,6 @@ class MyCardsViewController: UIViewController {
 }
 
 //MARK: - Custom Methods
-
 extension MyCardsViewController{
     private func loadCreditCards(){
         let request: NSFetchRequest<CreditCard> = CreditCard.fetchRequest()
@@ -73,9 +76,6 @@ extension MyCardsViewController{
 
 
 //MARK: - UICollectionViewDataSource
-
-
-
 extension MyCardsViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         creditCards.count
@@ -89,6 +89,8 @@ extension MyCardsViewController: UICollectionViewDataSource{
         cell.setCardHolder(with: card.fulname)
         cell.setCurrentMark(active: card.status)
         cell.setLogoImage(with: card.type)
+        cell.delegate = self
+        cell.currentIndexPath = indexPath
         return cell
     }
     
@@ -98,7 +100,6 @@ extension MyCardsViewController: UICollectionViewDataSource{
 }
 
 //MARK: - UICollectionViewDelegate
-
 extension MyCardsViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
@@ -111,10 +112,16 @@ extension MyCardsViewController: UICollectionViewDelegate{
         }
         loadCreditCards()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == mycardToUpdateCard{
+            let destinationVC = segue.destination as! UpdateCardViewController
+            destinationVC.selectedCard = self.selectedCard
+        }
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-
 extension MyCardsViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: 350, height: 200)
@@ -125,6 +132,16 @@ extension MyCardsViewController: UICollectionViewDelegateFlowLayout{
     }
 }
 
+extension MyCardsViewController: CardDetails{
+    func cardDetails(indexPath: IndexPath) {
+        selectedCard = creditCards[indexPath.row]
+        performSegue(withIdentifier: mycardToUpdateCard, sender: self)
+    }
+}
 
+
+protocol CardDetails{
+    func cardDetails(indexPath:IndexPath)
+}
 
 

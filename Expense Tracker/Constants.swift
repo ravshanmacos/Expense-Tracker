@@ -37,12 +37,14 @@ struct Constants{
     struct Images{
         static let menuIcon = UIImage.init(systemName: "circle.grid.2x2.fill")
         static let notificationIcon = UIImage.init(systemName: "bell.fill")
+        static let cardBackgroundImagesStrings = ["cardImage-1","cardImage-2","cardImage-3","cardImage-4","cardImage-5"]
     }
     
     struct Categories{
         static let incomes = ["Salary", "UpWork"]
         static let expenses = ["Shopping", "Food", "Payment"]
         static let transactionTypes = ["income","expense"]
+        static var cardTypes = ["None","MasterCard", "Visa Card","PayPal","Uzcard","Humo"]
     }
     
     struct CellIdentifiers {
@@ -62,6 +64,7 @@ struct Constants{
         static let mycardToAddcard = "mycardToAddCard"
         static let settingsToLanguages = "settingsToLangs"
         static let settingsToFeedback = "settingsToFeedback"
+        static let mycardToUpdateCard = "myCardsToUpdateCard"
         
     }
     struct Settings{

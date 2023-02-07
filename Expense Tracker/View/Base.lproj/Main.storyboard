@@ -391,6 +391,8 @@
                         <outlet property="orangeBox" destination="7l5-Sp-3sI" id="MVE-3h-f4q"/>
                         <outlet property="segmentControl" destination="dEI-Fi-6wX" id="fTi-1A-P3E"/>
                         <outlet property="tableview" destination="14Z-cI-P9C" id="GuB-mZ-OxZ"/>
+                        <outlet property="totalExpenseLabel" destination="QcA-PM-bJR" id="dki-Gn-nQd"/>
+                        <outlet property="totalIncomeLabel" destination="SKK-0E-ZYh" id="kXP-6j-KTl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sek-bo-Ozr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -757,6 +759,7 @@
                     <connections>
                         <outlet property="collectionView" destination="XZN-em-0m2" id="Xkc-Zn-9EZ"/>
                         <segue destination="C2A-WS-1ss" kind="show" identifier="mycardToAddCard" id="gtv-zx-fJE"/>
+                        <segue destination="amB-cY-yjj" kind="show" identifier="myCardsToUpdateCard" id="H6A-5I-tHj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2to-2B-N8b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1162,7 +1165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Cz-t6-HDu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2575" y="1675"/>
+            <point key="canvasLocation" x="2575" y="1689"/>
         </scene>
         <!--Profile-->
         <scene sceneID="30x-bo-RHY">
@@ -1493,6 +1496,170 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F62-gB-t6k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="776" y="1790"/>
+        </scene>
+        <!--Update Card-->
+        <scene sceneID="nX6-IH-SvW">
+            <objects>
+                <viewController storyboardIdentifier="UpdateCardViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="amB-cY-yjj" customClass="UpdateCardViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yGU-Cc-Who">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill all fields" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puf-nj-L2d">
+                                <rect key="frame" x="153" y="122.99999999999999" width="87.333333333333314" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FZB-QS-xxy" userLabel="Field Stack">
+                                <rect key="frame" x="10" y="163.33333333333337" width="373" height="308"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IBs-qb-cp8" userLabel="Card Type">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="89.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0T-BT-EnK">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="29.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJO-AN-cQh">
+                                                <rect key="frame" x="0.0" y="39.333333333333314" width="373" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="B6n-KX-k0H"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                                    <backgroundConfiguration key="background">
+                                                        <color key="backgroundColor" name="blue-light"/>
+                                                    </backgroundConfiguration>
+                                                    <color key="baseForegroundColor" name="gray-dark"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0tx-2m-Pix" userLabel="Card Holder">
+                                        <rect key="frame" x="0.0" y="109.33333333333334" width="373" height="89.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Holder Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fjb-LY-ZJP">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="29.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Jony Mendy" borderStyle="roundedRect" placeholder="&quot;Jony Mendy&quot;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CpY-kI-XU0">
+                                                <rect key="frame" x="0.0" y="39.333333333333314" width="373" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Woc-UO-ocu"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MJX-Bp-hrC" userLabel="Card Balance">
+                                        <rect key="frame" x="0.0" y="218.66666666666666" width="373" height="89.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4S-Pw-wCv">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="29.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5000" borderStyle="roundedRect" placeholder="&quot;$ 2,300.00&quot;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iLk-ca-ohL">
+                                                <rect key="frame" x="0.0" y="39.333333333333314" width="373" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="1s3-n6-0Tm"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="numberPad"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NWP-rP-7Qv" userLabel="Card Background Stack">
+                                <rect key="frame" x="10" y="491.33333333333326" width="373" height="98"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Background" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VG-Yc-iks">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exp-A2-TI2">
+                                        <rect key="frame" x="0.0" y="48.000000000000057" width="373" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Ih7-nR-Und"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="Choose card background" imagePadding="20">
+                                            <imageReference key="image" image="person.2.crop.square.stack.fill" catalog="system" symbolScale="medium" variableValue="0.80000000000000004"/>
+                                            <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" name="blue-light"/>
+                                            </backgroundConfiguration>
+                                            <color key="baseForegroundColor" name="gray-dark"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="chooseBackgroundTapped:" destination="amB-cY-yjj" eventType="touchUpInside" id="eS6-Ic-fVK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eNL-R8-eQp" userLabel="Status Stack">
+                                <rect key="frame" x="10" y="609.33333333333337" width="373" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Rb-Gs-yMK">
+                                        <rect key="frame" x="0.0" y="14.000000000000002" width="324" height="21.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zah-uF-eCs">
+                                        <rect key="frame" x="324" y="9.3333333333332575" width="51" height="31"/>
+                                    </switch>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="M0d-je-ylK"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Whe-To-5xk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FZB-QS-xxy" firstAttribute="leading" secondItem="Whe-To-5xk" secondAttribute="leading" constant="10" id="0t0-cH-QJJ"/>
+                            <constraint firstItem="puf-nj-L2d" firstAttribute="centerX" secondItem="yGU-Cc-Who" secondAttribute="centerX" id="OZ8-z7-gW5"/>
+                            <constraint firstItem="puf-nj-L2d" firstAttribute="top" secondItem="Whe-To-5xk" secondAttribute="top" constant="20" id="TPU-en-ORc"/>
+                            <constraint firstItem="eNL-R8-eQp" firstAttribute="top" secondItem="NWP-rP-7Qv" secondAttribute="bottom" constant="20" id="W8t-uj-99c"/>
+                            <constraint firstItem="Whe-To-5xk" firstAttribute="trailing" secondItem="eNL-R8-eQp" secondAttribute="trailing" constant="10" id="Z9Q-Hx-dYH"/>
+                            <constraint firstItem="NWP-rP-7Qv" firstAttribute="top" secondItem="FZB-QS-xxy" secondAttribute="bottom" constant="20" id="bQu-UK-y6J"/>
+                            <constraint firstItem="Whe-To-5xk" firstAttribute="trailing" secondItem="NWP-rP-7Qv" secondAttribute="trailing" constant="10" id="lTR-bf-DF8"/>
+                            <constraint firstItem="eNL-R8-eQp" firstAttribute="leading" secondItem="Whe-To-5xk" secondAttribute="leading" constant="10" id="nOi-ic-YiP"/>
+                            <constraint firstItem="FZB-QS-xxy" firstAttribute="top" secondItem="puf-nj-L2d" secondAttribute="bottom" constant="20" id="nTe-DJ-9eM"/>
+                            <constraint firstItem="NWP-rP-7Qv" firstAttribute="leading" secondItem="Whe-To-5xk" secondAttribute="leading" constant="10" id="qnX-fC-EOU"/>
+                            <constraint firstItem="Whe-To-5xk" firstAttribute="trailing" secondItem="FZB-QS-xxy" secondAttribute="trailing" constant="10" id="wKv-vv-LDp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Update Card" id="rC3-JA-myu">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="rez-KS-wVt">
+                            <connections>
+                                <action selector="saveCardTapped:" destination="amB-cY-yjj" id="cFx-ok-d1L"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="active" destination="zah-uF-eCs" id="uF2-9S-YaL"/>
+                        <outlet property="balanceField" destination="iLk-ca-ohL" id="7UG-Nf-Gcm"/>
+                        <outlet property="cardBckStack" destination="NWP-rP-7Qv" id="J8j-nk-1EH"/>
+                        <outlet property="chooseBckButton" destination="exp-A2-TI2" id="dvL-O5-H51"/>
+                        <outlet property="nameField" destination="CpY-kI-XU0" id="dFF-g3-c7T"/>
+                        <outlet property="typeButton" destination="NJO-AN-cQh" id="J5b-uI-KqS"/>
+                        <outlet property="warningLabel" destination="puf-nj-L2d" id="I6H-si-tfn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1yx-2d-jnw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3624" y="1299"/>
         </scene>
     </scenes>
     <resources>

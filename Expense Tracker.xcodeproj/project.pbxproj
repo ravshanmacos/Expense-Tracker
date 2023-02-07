@@ -47,6 +47,7 @@
 		B7A22C512981396D007A84E9 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A22C4F2981396D007A84E9 /* CardCollectionViewCell.swift */; };
 		B7A22C56298150A4007A84E9 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A22C55298150A4007A84E9 /* AddCardViewController.swift */; };
 		B7B18FA9297CFB15008A60E1 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B18FA8297CFB15008A60E1 /* AddTransactionViewController.swift */; };
+		B7B620DE299130D6004E1858 /* UpdateCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B620DD299130D6004E1858 /* UpdateCardViewController.swift */; };
 		B7C898E0298CBC61003912C7 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C898DF298CBC61003912C7 /* CalendarHelper.swift */; };
 		B7CAE3BE298BAC1B0071B660 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CAE3BD298BAC1B0071B660 /* Helper.swift */; };
 		B7E741CD298A31EC00AFAD2F /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E741CB298A31EC00AFAD2F /* EmptyTableViewCell.swift */; };
@@ -99,6 +100,7 @@
 		B7A22C4F2981396D007A84E9 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		B7A22C55298150A4007A84E9 /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		B7B18FA8297CFB15008A60E1 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
+		B7B620DD299130D6004E1858 /* UpdateCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCardViewController.swift; sourceTree = "<group>"; };
 		B7C898DF298CBC61003912C7 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		B7CAE3BD298BAC1B0071B660 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		B7E741CB298A31EC00AFAD2F /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				B780A597297A82EE0000D1C5 /* MyCardsViewController.swift */,
 				B7A22C55298150A4007A84E9 /* AddCardViewController.swift */,
+				B7B620DD299130D6004E1858 /* UpdateCardViewController.swift */,
 			);
 			path = "My Cards";
 			sourceTree = "<group>";
@@ -231,7 +234,7 @@
 				B727796C298A61A400C623D7 /* Views */,
 				B7A22C5329814146007A84E9 /* Cells */,
 				B780A59B297A85800000D1C5 /* TabbarViewController.swift */,
-				B780A590297A82A50000D1C5 /* HomeViewController.swift */,
+				B7B620DF29913170004E1858 /* Home */,
 				B7A22C47297FFC8E007A84E9 /* NotificationTableViewController.swift */,
 				B780A593297A82C40000D1C5 /* OverviewViewController.swift */,
 				B740385D29868EE600E4D0A6 /* My Cards */,
@@ -302,6 +305,14 @@
 				B7B18FA8297CFB15008A60E1 /* AddTransactionViewController.swift */,
 			);
 			path = "Add ";
+			sourceTree = "<group>";
+		};
+		B7B620DF29913170004E1858 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B780A590297A82A50000D1C5 /* HomeViewController.swift */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,6 +462,7 @@
 				B76D036F298ACD940096D082 /* EmptyCardView.swift in Sources */,
 				B7A22C3D297FD29E007A84E9 /* TransactionCell.swift in Sources */,
 				B7866BD629855CC8005C5CE7 /* CellStruct.swift in Sources */,
+				B7B620DE299130D6004E1858 /* UpdateCardViewController.swift in Sources */,
 				B7A22C48297FFC8E007A84E9 /* NotificationTableViewController.swift in Sources */,
 				B7738C0029824C1200FCECCF /* ImageCollectionViewCell.swift in Sources */,
 				B740385F29868F0000E4D0A6 /* EditViewController.swift in Sources */,

@@ -36,11 +36,11 @@ class HomeViewController: UIViewController {
     private let emptyReuseIdentifier = Constants.CellIdentifiers.emptyCell
     
     //Variables
-    private var activeCard:CreditCard?
-    private var transactions:[Transaction] = []
-    
-    //Instances
     private var databaseHelper = DatabaseHelper()
+    private var activeCard:CreditCard?
+    private var incomes:[Transaction] = []
+    private var expenses:[Transaction] = []
+    private var transactions:[Transaction] = []
     private var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
     
     
@@ -96,6 +96,8 @@ extension HomeViewController{
             cardView.setLogoImage(with: activeCard.type!)
             cardView.setBalance(with: activeCard.balance)
             cardView.setCardBckImage(with: activeCard.bckImage)
+            cardView.setIncome(with: Helper.calculateTotalBalances(with: incomes.map{$0.amount}))
+            cardView.setExpense(with: Helper.calculateTotalBalances(with: expenses.map{$0.amount}))
             cardViewStack.addArrangedSubview(cardView)
         } else {
             cardViewStack.removeArrangedSubview(cardView)
@@ -128,6 +130,8 @@ extension HomeViewController{
         if let activeCard = databaseHelper.getCurrentCard(with: creditCards), let transactions = databaseHelper.getTransactions(with: activeCard){
             self.activeCard = activeCard
             self.transactions = transactions
+            self.incomes = databaseHelper.getIncomes(with: transactions)
+            self.expenses = databaseHelper.getExpenses(with: transactions)
         }
         tableview.reloadData()
         }

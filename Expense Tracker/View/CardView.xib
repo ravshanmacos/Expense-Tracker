@@ -138,7 +138,9 @@
             <connections>
                 <outlet property="balanceLabel" destination="iCA-zM-f69" id="Xl3-ci-Cgg"/>
                 <outlet property="cardBckImage" destination="k1o-2I-mAq" id="Z9F-HZ-RbC"/>
+                <outlet property="expenseLabel" destination="V1M-E2-a8O" id="obd-bY-RaM"/>
                 <outlet property="holderName" destination="hbc-Jr-Epi" id="9Bq-bR-3HS"/>
+                <outlet property="incomeLabel" destination="a2e-Cg-alk" id="yaH-qG-7jO"/>
                 <outlet property="logoImage" destination="ZyX-5B-CwP" id="aOM-35-xkT"/>
             </connections>
             <point key="canvasLocation" x="176.33587786259542" y="-196.47887323943664"/>
